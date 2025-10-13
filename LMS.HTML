@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Library Management - HTML/JS</title>
+
+  <!-- jsPDF CDN for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <link rel="stylesheet" href="LMS.CSS" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>📚 Library Management</h1>
+
+      <!-- Theme toggle -->
+      <div class="controls">
+        <label class="switch">
+          <input id="themeToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <span id="themeLabel">Light</span>
+      </div>
+    </header>
+
+    <!-- Simple Login -->
+    <section class="login-section" id="loginSection">
+      <h2>Login</h2>
+      <input id="loginUser" placeholder="Username (admin/user)" />
+      <input id="loginPass" placeholder="Password" type="password" />
+      <button id="loginBtn">Login</button>
+      <p class="hint">Use username: <strong>admin</strong> (password: admin123) or username <strong>user</strong> (password: user123)</p>
+    </section>
+
+    <section id="mainSection" class="hidden">
+      <div class="topbar">
+        <p id="welcome">Welcome, <span id="roleLabel">User</span></p>
+        <p id="bookCount">Total Books: 0</p>
+      </div>
+
+      <!-- Book form -->
+      <div class="form-row">
+        <input id="title" placeholder="Book Title" />
+        <input id="author" placeholder="Author" />
+        <select id="category">
+          <option value="">Select Category</option>
+          <option>Fiction</option>
+          <option>Non-Fiction</option>
+          <option>Science</option>
+          <option>Programming</option>
+          <option>Other</option>
+        </select>
+        <input id="borrowDate" type="date" title="Borrow Date (optional)" />
+        <input id="returnDate" type="date" title="Return Date (optional)" />
+        <button id="addBookBtn">Add Book</button>
+      </div>
+
+      <!-- Filters + Sorting + Export -->
+      <div class="toolbar">
+        <input id="searchInput" placeholder="Search by title..." />
+        <select id="filterCategory">
+          <option value="">All categories</option>
+          <option>Fiction</option>
+          <option>Non-Fiction</option>
+          <option>Science</option>
+          <option>Programming</option>
+          <option>Other</option>
+        </select>
+
+        <select id="sortSelect">
+          <option value="none">Sort: None</option>
+          <option value="title-asc">Title A → Z</option>
+          <option value="title-desc">Title Z → A</option>
+          <option value="author-asc">Author A → Z</option>
+          <option value="author-desc">Author Z → A</option>
+          <option value="date-new">Newest</option>
+          <option value="date-old">Oldest</option>
+        </select>
+
+        <button id="exportCsv">Export CSV (Excel)</button>
+        <button id="exportPdf">Export PDF</button>
+        <button id="logoutBtn">Logout</button>
+      </div>
+
+      <!-- Book list -->
+      <div id="bookList" class="book-list"></div>
+    </section>
+
+  <script src="LMS.JS"></script>
+</body>
+</html>
